@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { WordEntry } from "@/types";
 import { Loader2, Search } from "lucide-react";
 import { getData } from "@/lib/api";
+import SearchSkeleton from "./SearchSkeleton";
 
 export default function DictionaryPage() {
   const [word, setWord] = useState<string>("");
@@ -55,7 +56,9 @@ export default function DictionaryPage() {
       </div>
 
       {isLoading ? (
-        <p className="text-center text-muted-foreground">Loading...</p>
+        <p className="text-center text-muted-foreground">
+          <SearchSkeleton/>
+        </p>
       ) : (
         <>
           {data.length > 0
